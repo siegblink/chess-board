@@ -1,4 +1,6 @@
 import React from 'react'
+import { DragDropContextProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import renderSquare from './renderSquare'
 
 export default function Board({ knightPosition }) {
@@ -8,15 +10,17 @@ export default function Board({ knightPosition }) {
   }
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '900px',
-        display: 'flex',
-        flexWrap: 'wrap',
-      }}
-    >
-      {squares}
-    </div>
+    <DragDropContextProvider backend={HTML5Backend}>
+      <div
+        style={{
+          width: '100%',
+          height: '900px',
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
+        {squares}
+      </div>
+    </DragDropContextProvider>
   )
 }
